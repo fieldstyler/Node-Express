@@ -12,6 +12,7 @@ class DictionaryTest < Minitest::Test
   def test_english_to_braille_lowercase_letter
     dictionary = Dictionary.new
     assert_equal ["0.", "..", ".."], dictionary.letters["a"]
+    assert_equal ['.0', '00', '0.'], dictionary.letters["t"]
   end
 
   def test_number_to_braille
@@ -24,6 +25,10 @@ class DictionaryTest < Minitest::Test
     assert_equal ['..', '00', '0.'], dictionary.special_chars["!"]
   end
 
-
+  def test_multiple_lowercase_letters_to_braille
+    skip
+    dictionary = Dictionary.new
+    assert_equal ["0.", "..", ".."], dictionary.letters["ab"]
+  end
 
 end
