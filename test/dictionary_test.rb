@@ -15,6 +15,12 @@ class DictionaryTest < Minitest::Test
     assert_equal ['.0', '00', '0.'], dictionary.letters["t"]
   end
 
+  def test_english_to_braille_uppercase_letter
+    dictionary = Dictionary.new
+    assert_equal ["..0.", "....", ".0.."], dictionary.letters["A"]
+    assert_equal ["...0", "..00", ".00."], dictionary.letters["T"]
+  end
+
   def test_number_to_braille
     dictionary = Dictionary.new
     assert_equal ['00', '.0', '..'], dictionary.numbers["4"]
