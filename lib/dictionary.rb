@@ -1,7 +1,8 @@
 class Dictionary
-  attr_reader :all_chars
+  attr_reader :english_to_braille,
+              :braille_to_english
   def initialize
-          @all_chars = {
+          @english_to_braille = {
                       'a' => ['0.', '..', '..'],
                       'b' => ['0.', '0.', '..'],
                       'c' => ['00', '..', '..'],
@@ -72,5 +73,6 @@ class Dictionary
                       ',' => ['..', '0.', '..'],
                       '-' => ['..', '..', '00']
                     }
+    @braille_to_english = @all_chars.invert
   end
 end
