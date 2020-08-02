@@ -19,6 +19,11 @@ class DictionaryTest < Minitest::Test
     assert_equal ['00', '.0', '..'], dictionary.numbers["4"]
   end
 
+  def test_special_character_to_braille
+    dictionary = Dictionary.new
+    assert_equal ['..', '00', '0.'], dictionary.special_chars["!"]
+  end
+
 
 
 end
