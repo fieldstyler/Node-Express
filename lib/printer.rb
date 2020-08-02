@@ -13,7 +13,7 @@ class Printer
 
   def translate_input_to_braille
     separate_input.map do |input|
-      @dictionary.all_chars[input]
+      @dictionary.english_to_braille[input]
     end
   end
 
