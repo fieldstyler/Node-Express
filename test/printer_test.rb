@@ -50,6 +50,25 @@ class PrinterTest < Minitest::Test
     assert_equal "..0.", printer2.bottom_line
     printer3 = Printer.new('7A!')
     assert_equal "...0..0.", printer3.bottom_line
+    assert_equal 8, printer3.bottom_line.length
+  end
+
+  def test_eighty_character_limit_per_line
+    printer3 = Printer.new('aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa')
+    expected = "0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.\n................................................................................\n................................................................................"
+    assert_equal expected, printer3.eighty_characters_per_line
+
+    printer4 = Printer.new('aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa')
+    expected1 = "0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.\n................................................................................\n................................................................................\n0.\n..\n.."
+    assert_equal expected1, printer4.eighty_characters_per_line
+
+    printer5 = Printer.new(" !',-.?abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ")
+    expected2 = "..............0.0.00000.00000..0.00.0.00000.00000..0.00.0..000000...0...0...00..\n..00..0...000...0....0.00.00000.00..0....0.00.00000.00..0.00...0.0......0.......\n..0.0...00.000....................0.0.0.0.0.0.0.0.0.0.0000.0000000.0...0...0...0\n00..0...00..00..0....0...0..0...0...00..00..0...00..00..0....0...0..0...0....0..\n.0...0..0...00..00..0...00......0........0...0..0...00..00..0...00......0...00..\n...0...0...0...0...0...0...00..00..00..00..00..00..00..00..00..00..000.000.0.0.0\n00..00..0.\n.....0...0\n00.000.000"
+    assert_equal expected2, printer5.eighty_characters_per_line
+
+    printer6 = Printer.new("Hello, world")
+    expected3 = "..0.0.0.0.0......00.0.0.00\n..00.00.0..00...00.0000..0\n.0....0.0.0......00.0.0..."
+    assert_equal expected3, printer6.eighty_characters_per_line
   end
 
 end
