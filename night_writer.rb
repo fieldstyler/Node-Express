@@ -10,3 +10,6 @@ class NightWriter
   end
 
 end
+
+night_writer = NightWriter.new(ARGV[0], ARGV[1])
+night_writer.translate_english_to_braille
