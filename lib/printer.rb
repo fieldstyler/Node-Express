@@ -76,4 +76,26 @@ class Printer
     end.join
   end
 
+  # def separate_braille
+  #   counter = 1
+  #   expected = ""
+  #   @input.transpose.map do |line|
+  #     if counter < @input.transpose.size
+  #       expected << line.join + "\n"
+  #       counter += 1
+  #     elsif
+  #       expected << line.join
+  #     end
+  #   end
+  #   expected
+  # end
+
+  def separate_braille
+    # array_of_braille_chars = []
+    # individual_braille_char_array = []
+    input.split("\n").each do |x|
+    require "pry"; binding.pry
+  end 
+  end
+
 end
