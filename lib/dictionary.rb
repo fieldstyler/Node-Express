@@ -73,6 +73,6 @@ class Dictionary
                       ',' => ['..', '0.', '..'],
                       '-' => ['..', '..', '00']
                     }
-    @braille_to_english = @all_chars.invert
+    @braille_to_english = @english_to_braille.invert
   end
 end
