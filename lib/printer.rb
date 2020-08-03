@@ -11,37 +11,37 @@ class Printer
     @output = []
   end
 
-  def separate_input
+  def separate_english_characters
     @input.chars
   end
 
-  def translate_input_to_braille
-    separate_input.map do |input|
+  def translate_english_to_braille
+    separate_english_characters.map do |input|
       @dictionary.english_to_braille[input]
     end.compact
   end
 
   def top_line
-    translate_input_to_braille.reduce("") do |line, braille_character|
+    translate_english_to_braille.reduce("") do |line, braille_character|
       line << braille_character[0]
     end
   end
 
   def middle_line
-    translate_input_to_braille.reduce("") do |line, braille_character|
+    translate_english_to_braille.reduce("") do |line, braille_character|
       line << braille_character[1]
     end
   end
 
   def bottom_line
-    translate_input_to_braille.reduce("") do |line, braille_character|
+    translate_english_to_braille.reduce("") do |line, braille_character|
       line << braille_character[2]
     end
   end
 
   def translate_to_braille_max_eighty_chars
-    separate_input
-    translate_input_to_braille
+    separate_english_characters
+    translate_english_to_braille
     top = top_line
     mid = middle_line
     bot = bottom_line
@@ -70,4 +70,10 @@ class Printer
       @output.join
   end
 #----------------------------------------------------------------------
+  def translate_braille_to_english
+    @input.map do |chars|
+      @dictionary.braille_to_english[chars]
+    end.join
+  end
+
 end
