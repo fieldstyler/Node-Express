@@ -71,4 +71,16 @@ class PrinterTest < Minitest::Test
     assert_equal 'hi!', printer1.translate_braille_to_english
   end
 
+  # def test_can_turn_braille_input_into_three_rows
+  #   printer = Printer.new([['0.', '..', '..'], ['0.', '0.', '..']])
+  #   expected = "0.0.\n..0.\n...."
+  #   assert_equal expected, printer.separate_braille
+  # end
+
+  def test_can_turn_rows_into_braille_characters
+    printer = Printer.new("0.0.\n..0.\n....")
+      expected = [['0.', '..', '..'], ['0.', '0.', '..']]
+      assert_equal expected, printer.separate_braille
+  end
+
 end
