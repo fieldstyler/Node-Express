@@ -56,19 +56,19 @@ class PrinterTest < Minitest::Test
   def test_eighty_character_limit_per_line
     printer3 = Printer.new('aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa')
     expected = "0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.\n................................................................................\n................................................................................"
-    assert_equal expected, printer3.eighty_characters_per_line
+    assert_equal expected, printer3.translate_to_braille_max_eighty_chars
 
     printer4 = Printer.new('aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa')
     expected1 = "0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.0.\n................................................................................\n................................................................................\n0.\n..\n.."
-    assert_equal expected1, printer4.eighty_characters_per_line
+    assert_equal expected1, printer4.translate_to_braille_max_eighty_chars
 
     printer5 = Printer.new(" !',-.?abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ")
     expected2 = "..............0.0.00000.00000..0.00.0.00000.00000..0.00.0..000000...0...0...00..\n..00..0...000...0....0.00.00000.00..0....0.00.00000.00..0.00...0.0......0.......\n..0.0...00.000....................0.0.0.0.0.0.0.0.0.0.0000.0000000.0...0...0...0\n00..0...00..00..0....0...0..0...0...00..00..0...00..00..0....0...0..0...0....0..\n.0...0..0...00..00..0...00......0........0...0..0...00..00..0...00......0...00..\n...0...0...0...0...0...0...00..00..00..00..00..00..00..00..00..00..000.000.0.0.0\n00..00..0.\n.....0...0\n00.000.000"
-    assert_equal expected2, printer5.eighty_characters_per_line
+    assert_equal expected2, printer5.translate_to_braille_max_eighty_chars
 
     printer6 = Printer.new("Hello, world")
     expected3 = "..0.0.0.0.0......00.0.0.00\n..00.00.0..00...00.0000..0\n.0....0.0.0......00.0.0..."
-    assert_equal expected3, printer6.eighty_characters_per_line
+    assert_equal expected3, printer6.translate_to_braille_max_eighty_chars
   end
 
 end
