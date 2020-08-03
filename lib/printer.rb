@@ -1,6 +1,10 @@
 require "./lib/dictionary"
+require "./lib/file_handler"
 class Printer
 
+  attr_reader :dictionary,
+              :input,
+              :output
   def initialize(input)
     @dictionary = Dictionary.new
     @input = input
@@ -14,7 +18,7 @@ class Printer
   def translate_input_to_braille
     separate_input.map do |input|
       @dictionary.english_to_braille[input]
-    end
+    end.compact
   end
 
   def top_line
@@ -35,7 +39,9 @@ class Printer
     end
   end
 
-  def eighty_characters_per_line
+  def translate_to_braille_max_eighty_chars
+    separate_input
+    translate_input_to_braille
     top = top_line
     mid = middle_line
     bot = bottom_line
@@ -63,4 +69,5 @@ class Printer
     end
       @output.join
   end
+#----------------------------------------------------------------------
 end
