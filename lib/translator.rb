@@ -69,16 +69,16 @@ class Translator
   def separate_braille
     split_input = input.split("\n")
     length_of_input = split_input.length
-    remade_chunks = []
+    braille_chunks = []
     split_input[0].each_char.with_index do |chunk, index|
       if index.even?
-        remade_chunks <<  [split_input[0][index] + split_input[0][index + 1],
-                          split_input[1][index] + split_input[1][index + 1],
-                          split_input[2][index] + split_input[2][index + 1]]
-      #if remade_chunks matches capital, use split_input[1..4] and skip next iteration
+        braille_chunks <<  [split_input[0][index] + split_input[0][index + 1],
+                            split_input[1][index] + split_input[1][index + 1],
+                            split_input[2][index] + split_input[2][index + 1]]
+      #if braille_chunks matches capital, use split_input[1..4] and skip next iteration
       end
     end
-    remade_chunks
+    braille_chunks
   end
 
   def translate_braille_to_english
