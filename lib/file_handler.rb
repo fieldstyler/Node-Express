@@ -1,15 +1,6 @@
 require "./lib/translator"
 module FileHandler
 
-  # def self.read_and_write_file(input, output)
-  #
-  #   contents = File.read(input)
-  #   File.open(output, "w") do |file|
-  #     file.write contents
-  #   end
-  #   "Created #{output} containing #{File.read(output).chomp.length} characters."
-  # end
-
   def self.translate_to_braille(english_file_name, braille_file_name)
 
     contents = File.read(english_file_name)
@@ -29,6 +20,5 @@ module FileHandler
     end
     "Created #{english_file_name} containing #{File.read(english_file_name).chomp.length} characters."
   end
-  #make translator module
 
 end
