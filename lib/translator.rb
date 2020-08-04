@@ -47,8 +47,11 @@ class Translator
     mid = middle_line
     bot = bottom_line
     counter = 0
-    #ternary
-    number_of_rows = top.length % 80 == 0 ? (top.length / 80) : (top.length / 80) + 1
+    if top.length % 80 == 0
+      number_of_rows = top.length / 80
+    else
+      number_of_rows = (top.length / 80) + 1
+    end
     number_of_rows.times do
       if top.length > 80
         @output <<  top.slice!(0..79) + "\n" +
