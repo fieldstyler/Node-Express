@@ -32,6 +32,7 @@ app.get('/api/v1/footnotes', (request, response) => {
   });
 });
 
+
 app.post('/api/v1/papers', (request, response) => {
   const paper = request.body;
 
